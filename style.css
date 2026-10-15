@@ -1,4 +1,4 @@
-* {
+*/ * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
@@ -107,4 +107,4 @@ body{
     background: linear-gradient(to right, #594946, #231019);
     border-radius: 20px;
     display: none;
-}
+} 
