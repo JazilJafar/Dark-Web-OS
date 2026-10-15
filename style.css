@@ -1,0 +1,110 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body{
+    background: linear-gradient(to right, #594946, #231019);
+}
+/* styling of welcome page this is by jazil not by ai */
+#welc{
+    font-family: 'Poppins', sans-serif;
+    position: absolute;
+    top: 43%;
+    left: 31%;
+    border-radius: 50px;
+    opacity: 70%;
+    background: linear-gradient(to right, #594946, #231019);
+    padding: 50px;
+}
+#welc button{
+    position: absolute;
+    left: 250px;
+    padding: 10px;
+    background: linear-gradient(to right, #594946, #231019);
+    border: none;
+    border-radius: 10px;
+}
+/* honestly i am using more linaer gradient because i love it  */
+#darkdesk{
+    background: linear-gradient(to right, #594946, #231019);
+    width: 100%;
+    height: 100vh;
+    position: relative;
+}
+/* next step is making cxolorful topbar i completd the window */
+#toptime{
+    height: 40px;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+#toptime:nth-child(1){
+    margin-left: 100px;
+}
+#toptime:nth-child(3){
+    margin-right: 700px;
+}
+#shutdownos{
+     background: #e74c3c;
+  color: white;
+  border: none;
+  padding: 7px 12px;
+  border-radius: 10px;
+  font-size: 15px;
+  cursor: pointer;
+}
+#icons{
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 80px;
+}
+.iconindark{
+    text-align: center;
+    font-size: 16px;
+    cursor: pointer;
+    color: white;
+    font-family: 'monospace', sans-serif;
+}
+.iconBox{
+    background: linear-gradient(to right, #594946, #231019);
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 4px auto;
+}
+#dock{
+   position: absolute;
+   bottom: 10px;
+   left: 60%;
+   transform: translateX(-50%);
+   padding: 9px;
+   border-radius: 20px;
+   display: flex;
+   gap: 14px;
+   background: linear-gradient(to right, #594946, #231019);
+}
+#dock button{
+    background: linear-gradient(to right, #594946, #231019);
+    border: none;
+    padding: 10px;
+    border-radius: 10px;
+    cursor: pointer;
+}
+.window{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 400px;
+    height: 300px;
+    background: linear-gradient(to right, #594946, #231019);
+    border-radius: 20px;
+    display: none;
+}
