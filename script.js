@@ -154,3 +154,27 @@ function getHacktermHTML(){
     '<div id="termInputRow"><span>&gt; </span><input id="termInput"></div>'+
     '</div>';
 }
+function setupHackterm(win){
+    var input = win.querySelector('#termInput');
+    var log = win.querySelector('#termlog');
+    input.addEventListener('keydown', function(e){
+        if (e.key !== 'Enter') return;
+        var cmd = input.value;
+        input.value = '0';
+        log.innerHTML += '&gt; ' + cmd + '<br>';
+        if (cmd === 'hack'){
+            log.innerHTML += 'execute: scrap, browse, hacker value, clear<br>';
+        }else if (cmd === 'scrap'){
+            log.innerHTML += 'It means you are scrapping a data from website using api<br>';
+        }else if (cmd === 'browse'){
+            log.innerHTML += 'hacker use tor browser to browse <br>';
+        }else if (cmd === 'hacker value'){
+            log.innerHTML += 'hacker value is value wanted for a hacker more look at https://santi.lol/blog/hacker-value/ <br>';
+        }else if (cmd === 'clear'){
+            log.innerHTML =  '';
+        }else {
+            log.innerHTML += 'Unknown hack command<br>';
+        }
+        log.scrollTop = log.scrollHeight;
+    });
+}
