@@ -177,4 +177,13 @@ function setupHackterm(win){
         }
         log.scrollTop = log.scrollHeight;
     });
+};
+// next is our faviourate hackbrowse
+
+function getHackbrowseHTML(){
+    return '<div class="wintop"><span>HackBrowse</span><span class="winbar"><span class="minbtn"></span><span class="maxbtn"></span><span class="closebtn"></span></span></div>'+
+    '<div class="winbody" style="padding: 0px;">'+
+    '<iframe id="hackbroimg" src="https://thumbs.dreamstime.com/b/curious-ginger-cat-watching-code-laptop-screen-ginger-cat-intently-watches-laptop-screen-displaying-programming-code-384022844.jpg" style="width: 80%; height: 80%; border: none;"></iframe>' +
+    '<h1 style="text-align: center;">Hello look again sometimes after i am seriously searching to study <br> hacking </h1>'+
+    '</div>';
 }
