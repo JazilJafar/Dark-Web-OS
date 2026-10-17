@@ -146,3 +146,11 @@ function calceq(){
         calcVal = '';
     }
 }
+// i completed calculator next is our hacterminal
+function getHacktermHTML(){
+    return '<div class="wintop"><span>HackTerm</span><span class="winbar"><span class="minbtn"></span><span class="maxbtn"></span><span class="closebtn"></span></span></div>'+
+    '<div class="winbody" style="padding: 0px;">'+
+    '<div id="termlog">Type hack to get all hack stuff things<br></div>'+
+    '<div id="termInputRow"><span>&gt; </span><input id="termInput"></div>'+
+    '</div>';
+}
