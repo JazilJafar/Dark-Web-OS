@@ -4,7 +4,7 @@
     box-sizing: border-box;
 }
 body{
-    background: linear-gradient(to right, #594946, #231019);
+    background: linear-gradient(to right, #100d0d, #231019);
 }
 /* styling of welcome page this is by jazil not by ai */
 #welc{
@@ -21,13 +21,14 @@ body{
     position: absolute;
     left: 250px;
     padding: 10px;
-    background: linear-gradient(to right, #594946, #231019);
+    background: linear-gradient(to right, #131111, #231019);
     border: none;
     border-radius: 10px;
+    color: white;
 }
 /* honestly i am using more linaer gradient because i love it  */
 #darkdesk{
-    background: linear-gradient(to right, #594946, #231019);
+    background: linear-gradient(to right, #0f0e0e, #231019);
     width: 100%;
     height: 100vh;
     position: relative;
@@ -70,7 +71,7 @@ body{
     font-family: 'monospace', sans-serif;
 }
 .iconBox{
-    background: linear-gradient(to right, #594946, #231019);
+    background: linear-gradient(to right, #1f1e1e, #231019);
     width: 50px;
     height: 50px;
     border-radius: 16px;
@@ -88,10 +89,10 @@ body{
    border-radius: 20px;
    display: flex;
    gap: 14px;
-   background: linear-gradient(to right, #594946, #231019);
+   background: linear-gradient(to right, #181515, #231019);
 }
 #dock button{
-    background: linear-gradient(to right, #594946, #231019);
+    background: linear-gradient(to right, #0d0d0d, #231019);
     border: none;
     padding: 10px;
     border-radius: 10px;
@@ -104,7 +105,87 @@ body{
     transform: translate(-50%, -50%);
     width: 400px;
     height: 300px;
-    background: linear-gradient(to right, #594946, #231019);
+    background: linear-gradient(to right, #141313, #231019);
     border-radius: 20px;
     display: none;
-} 
+}
+.win {
+    position: absolute;
+    background: linear-gradient(to right, #251c1b, #231019);
+    border-radius: 20px;
+    display: block;
+}
+.closebtn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #e74c3c;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.maxbtn {
+    position: absolute;
+    top: 10px;
+    right: 69px;
+    background: #3498db;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.minbtn {
+    position: absolute;
+    top: 10px;
+    right: 39px;
+    background: #f1c40f;
+    color: white;
+    border: none;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+.wintop {
+    user-select: none;
+    cursor: move; 
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 10px;
+    background: #333;
+}
+.winbar {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.closebtn, .minbtn, .maxbtn {
+    position: relative;
+    top: auto; 
+    right: auto;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    cursor: pointer;
+    border: none;
+}
+.calcRow {
+    display: flex;
+    gap: 8px;
+    margin: 0 10px 8px 10px;
+}
+.calcRow button {
+    flex: 1;
+    padding: 10px;
+    font-size: 18px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+div#calcscreen {
+    color: rgb(242, 238, 229);
+    padding: 2px 0;
+    font-size: 24px;
+}

@@ -36,10 +36,6 @@ function openApp(name) {
         win.style.width = '250px';
         win.style.height = '300px';
         win.innerHTML = getCalcHTML();
-    }else if (name === 'hackerdone'){
-        win.style.width = '400px';
-        win.style.height = '300px';
-        win.innerHTML = getHackdoneHTML();
     }else if (name === 'hackterm'){
         win.style.width = '200px';
         win.style.height = '300px';
@@ -83,7 +79,6 @@ function openApp(name) {
     if(name === 'hacalc' && typeof setupCalc === 'function') setupCalc(win); 
     if(name === 'hackbrowse' && typeof setupHackbrowse === 'function') setupHackbrowse(win); 
     if(name === 'hackterm' && typeof setupHackterm === 'function') setupHackterm(win); 
-    if(name === 'hackerdone' && typeof setupHackdone === 'function') setupHackdone(win); 
 }
 
 //  we are doinf next the dragging and focusing
@@ -94,25 +89,32 @@ function focusWin(win){
     win.style.zIndex = zIndex;
 }
 function makeDraggeble(win){
-    var bar = win.querySelector('.winbar');
+    var bar = win.querySelector('.wintop'); 
     var offX = 0, offY = 0, dragging = false;
 
     bar.onmousedown = function(e){
-        if (e.target.tagName === 'SPAN') return;
+        if (e.target.classList.contains('minbtn') || 
+            e.target.classList.contains('maxbtn') || 
+            e.target.classList.contains('closebtn')) {
+            return;
+        }
+        
         dragging = true;
         offX = e.clientX - win.offsetLeft;
         offY = e.clientY - win.offsetTop;
         focusWin(win);
     };
+    
     document.onmousemove = function(e){
         if (!dragging) return;
         win.style.left = (e.clientX - offX) + 'px';
         win.style.top = (e.clientY - offY) + 'px';
-    }
+    };
     document.onmouseup = function(){
         dragging = false;
-    }
+    };
 }
+
 //  i am jazil not ai code is by jazil everything is by jazil 
 //  next step is making calculator 
 
@@ -124,8 +126,7 @@ function getCalcHTML(){
     '<div class="calcRow"><button onclick="calcpress(\'7\')">7</button><button onclick="calcpress(\'8\')">8</button><button onclick="calcpress(\'9\')">9</button><button onclick="calcpress(\'+\')" class="op">+</button></div>' +
     '<div class="calcRow"><button onclick="calcpress(\'4\')">4</button><button onclick="calcpress(\'5\')">5</button><button onclick="calcpress(\'6\')">6</button><button onclick="calcpress(\'+\')" class="op">+</button></div>' +
     '<div class="calcRow"><button onclick="calcpress(\'1\')">1</button><button onclick="calcpress(\'2\')">2</button><button onclick="calcpress(\'3\')">3</button></div>' +
-    '<div class="calcRow"><button onclick="calcpress(\'0\')" style="flex: 2;">0</button><button onclick="calcpress(\'.\')">.</button><button onclick="calceq()" class="eq">=</button></div>' +
-    '</div>';
+    '<div class="calcRow"><button onclick="calcpress(\'0\')" style="flex: 2;">0</button><button onclick="calcpress(\'.\')">.</button><button onclick="calceq()" class="eq">=</button></div>' ;
 }
 var calcVal = '';
 function calcpress(val){
@@ -182,8 +183,8 @@ function setupHackterm(win){
 
 function getHackbrowseHTML(){
     return '<div class="wintop"><span>HackBrowse</span><span class="winbar"><span class="minbtn"></span><span class="maxbtn"></span><span class="closebtn"></span></span></div>'+
-    '<div class="winbody" style="padding: 0px;">'+
-    '<iframe id="hackbroimg" src="https://thumbs.dreamstime.com/b/curious-ginger-cat-watching-code-laptop-screen-ginger-cat-intently-watches-laptop-screen-displaying-programming-code-384022844.jpg" style="width: 80%; height: 80%; border: none;"></iframe>' +
-    '<h1 style="text-align: center;">Hello look again sometimes after i am seriously searching to study <br> hacking </h1>'+
+    '<div class="winbody" style="padding: 0px; overflow: hidden;">'+
+    '<img id="hackbroimg" src="https://thumbs.dreamstime.com/b/curious-ginger-cat-watching-code-laptop-screen-ginger-cat-intently-watches-laptop-screen-displaying-programming-code-384022844.jpg" style="width: 400px; height: 300px; border: none;"></img>' +
+    '<h1 style="text-align: center;color: white;">Hello look again sometimes after i am seriously searching to study <br> hacking </h1>'+
     '</div>';
 }
