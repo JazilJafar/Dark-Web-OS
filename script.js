@@ -37,7 +37,7 @@ function openApp(name) {
         win.style.height = '300px';
         win.innerHTML = getCalcHTML();
     }else if (name === 'hackterm'){
-        win.style.width = '200px';
+        win.style.width = '300px';
         win.style.height = '300px';
         win.innerHTML = getHacktermHTML();
     }else if (name === 'hackbrowse'){
@@ -120,32 +120,46 @@ function makeDraggeble(win){
 
 function getCalcHTML(){
     return '<div class="wintop"><span>hacalc</span><span class="winbar"><span class="minbtn"></span><span class="maxbtn"></span><span class="closebtn"></span></span></div>' +
-    '<div class="winbody"></div>' +
-    '<div id="calcscreen">0</div>' +
-    '<div class="calcRow"><button onclick="calcClear()">C</button><button onclick="calcpress(\'/\')" class="op">/</button><button onclick="calcpress(\'*\')" class="op">*</button><button onclick="calcpress(\'-\')" class="op">-</button></div>' +
-    '<div class="calcRow"><button onclick="calcpress(\'7\')">7</button><button onclick="calcpress(\'8\')">8</button><button onclick="calcpress(\'9\')">9</button><button onclick="calcpress(\'+\')" class="op">+</button></div>' +
-    '<div class="calcRow"><button onclick="calcpress(\'4\')">4</button><button onclick="calcpress(\'5\')">5</button><button onclick="calcpress(\'6\')">6</button><button onclick="calcpress(\'+\')" class="op">+</button></div>' +
-    '<div class="calcRow"><button onclick="calcpress(\'1\')">1</button><button onclick="calcpress(\'2\')">2</button><button onclick="calcpress(\'3\')">3</button></div>' +
-    '<div class="calcRow"><button onclick="calcpress(\'0\')" style="flex: 2;">0</button><button onclick="calcpress(\'.\')">.</button><button onclick="calceq()" class="eq">=</button></div>' ;
+    '<div class="winbody" style="padding: 10px;">' +
+    '<div class="calcscreen" style="background: #111; color: #fff; padding: 10px; font-size: 24px; text-align: right; margin-bottom: 10px; border-radius: 5px; min-height: 40px;">0</div>' +
+    '<div class="calcRow"><button data-val="C">C</button><button data-val="/" class="op">/</button><button data-val="*" class="op">*</button><button data-val="-" class="op">-</button></div>' +
+    '<div class="calcRow"><button data-val="7">7</button><button data-val="8">8</button><button data-val="9">9</button><button data-val="+" class="op">+</button></div>' +
+    '<div class="calcRow"><button data-val="4">4</button><button data-val="5">5</button><button data-val="6">6</button><button data-val="." class="op">.</button></div>' +
+    '<div class="calcRow"><button data-val="1">1</button><button data-val="2">2</button><button data-val="3">3</button><button data-val="=" class="eq">=</button></div>' +
+    '<div class="calcRow"><button data-val="0" style="flex: 1;">0</button></div>' +
+    '</div>';
 }
-var calcVal = '';
-function calcpress(val){
-    calcVal += val;
-    document.getElementById('calcscreen').innerText = calcVal;
-}
-function calcClear(){
-    calcVal = '';
-    document.getElementById('calcscreen').innerText = '0';
-}
-function calceq(){
-    try{
-        var result = eval(calcVal);
-        document.getElementById('calcscreen').innerText = result;
-        calcVal = result.toString();
-    }catch(e){
-        document.getElementById('calcscreen').innerText =  'Error';
-        calcVal = '';
-    }
+
+function setupCalc(win) {
+    var screen = win.querySelector('.calcscreen');
+    var calcVal = '';
+
+    win.querySelectorAll('.calcRow button').forEach(function(btn) {
+        btn.onclick = function() {
+            var val = btn.getAttribute('data-val');
+            
+            if (val === 'C') {
+                calcVal = '';
+                screen.innerText = '0';
+            } else if (val === '=') {
+                try {
+                    var result = eval(calcVal);
+                    screen.innerText = result;
+                    calcVal = result.toString();
+                } catch (e) {
+                    screen.innerText = 'Error';
+                    calcVal = '';
+                }
+            } else {
+                if (calcVal === '0' && val !== '.') {
+                    calcVal = val;
+                } else {
+                    calcVal += val;
+                }
+                screen.innerText = calcVal;
+            }
+        };
+    });
 }
 // i completed calculator next is our hacterminal
 function getHacktermHTML(){
@@ -155,13 +169,15 @@ function getHacktermHTML(){
     '<div id="termInputRow"><span>&gt; </span><input id="termInput"></div>'+
     '</div>';
 }
+
 function setupHackterm(win){
     var input = win.querySelector('#termInput');
     var log = win.querySelector('#termlog');
     input.addEventListener('keydown', function(e){
         if (e.key !== 'Enter') return;
         var cmd = input.value;
-        input.value = '0';
+        input.value = ''; 
+        
         log.innerHTML += '&gt; ' + cmd + '<br>';
         if (cmd === 'hack'){
             log.innerHTML += 'execute: scrap, browse, hacker value, clear<br>';
@@ -178,13 +194,13 @@ function setupHackterm(win){
         }
         log.scrollTop = log.scrollHeight;
     });
-};
+}
 // next is our faviourate hackbrowse
 
 function getHackbrowseHTML(){
     return '<div class="wintop"><span>HackBrowse</span><span class="winbar"><span class="minbtn"></span><span class="maxbtn"></span><span class="closebtn"></span></span></div>'+
-    '<div class="winbody" style="padding: 0px; overflow: hidden;">'+
-    '<img id="hackbroimg" src="https://thumbs.dreamstime.com/b/curious-ginger-cat-watching-code-laptop-screen-ginger-cat-intently-watches-laptop-screen-displaying-programming-code-384022844.jpg" style="width: 400px; height: 300px; border: none;"></img>' +
-    '<h1 style="text-align: center;color: white;">Hello look again sometimes after i am seriously searching to study <br> hacking </h1>'+
+    '<div class="winbody" style="padding: 0px; overflow: hidden; display: flex; flex-direction: column; height: calc(100% - 30px);">'+
+    '<img id="hackbroimg" src="https://thumbs.dreamstime.com/b/curious-ginger-cat-watching-code-laptop-screen-ginger-cat-intently-watches-laptop-screen-displaying-programming-code-384022844.jpg" alt="Hacker Cat"></img>' +
+    '<h1>Hello look again sometimes after i am seriously searching to study <br> hacking</h1>'+
     '</div>';
 }

@@ -83,7 +83,7 @@ body{
 #dock{
    position: absolute;
    bottom: 10px;
-   left: 60%;
+   left: 50%;
    transform: translateX(-50%);
    padding: 9px;
    border-radius: 20px;
@@ -188,4 +188,61 @@ div#calcscreen {
     color: rgb(242, 238, 229);
     padding: 2px 0;
     font-size: 24px;
+}
+#termlog {
+    background-color: #0c0a0a;
+    color: #00ff66;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    padding: 10px;
+    height: 220px;
+    overflow-y: auto;
+    word-break: break-all;
+    line-height: 1.4;
+}
+#termInputRow {
+    display: flex;
+    align-items: center;
+    background-color: #121010;
+    color: #00ff66;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    padding: 6px 10px;
+    border-top: 1px solid #222;
+}
+#termInput {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #00ff66;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 14px;
+    width: 100%;
+    margin-left: 5px;
+}
+.winbody {
+    overflow: hidden;
+    background: #141313;
+    height: 100%;
+}
+#hackbroimg {
+    width: 100% !important;
+    height: 170px !important;
+    object-fit: cover;
+    border-bottom: 2px solid #2e141d;
+    width: 100%;
+    flex: 1;
+    object-fit: cover; 
+    border: none;
+    min-height: 150px;
+}
+.winbody h1 {
+    font-family: 'Poppins', sans-serif;
+    font-size: 13px;
+    font-weight: 400;
+    text-align: center;
+    color: #e2ded5;
+    padding: 15px;
+    line-height: 1.5;
+    margin: 0;
 }
